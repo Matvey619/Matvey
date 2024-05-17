@@ -3,11 +3,11 @@
 #include <unistd.h>
 #include <stdlib.h>
 int main() {
-int df[2];
+int df[2], result;
 size_t size;
 char string[] = "hello from pipe!\n";
 char resstring[17];
-if (pipe(df)<0 {
+if (result <0) {
 prinff("ne udaloc' zapisat'17 bait iz stroki\n)";
 exit(-1);
 }
