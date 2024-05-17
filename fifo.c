@@ -8,17 +8,23 @@ int main() {
 int fd, result;
 size_t size;
 char string[] = "Gr.3.124.2.23", resstring[13];
-char name[] = "fifo.fif";
-if(mknod(name, S_IFIFO | 0666, 0)<0) {
+char name[] = "fifo.fifo";
+/*	if(mknod(name, S_IFIFO | 0666, 0)<0) {
 printf("ne udaloc' create FIFO/n");
 exit(-1);
 }
+*/ 
 if((result = fork()) < 0) {
 printf("ne udaloc' create do4eryi procecc/n");
 exit(-1);
 }
 else if(result > 0) {
 if((fd = open(name, O_WRONLY)) < 0) {
+printf("ne udaloc' zapicat' str celicom");
+exit(-1);
+}
+size = write(fd, string, 13);
+if(size !=13) {
 printf("ne udaloc' zapicat' str celicom");
 exit(-1);
 }
@@ -36,7 +42,7 @@ if (size != 13) {
 printf("ne udaloc' pro4itat' vsu str");
 exit(-1);
 }
-printf("deo4 proc write str: %s/n", resstring);
+printf("deo4 proc write str: %s\n", resstring);
 close(fd);
 }
 return 0;
